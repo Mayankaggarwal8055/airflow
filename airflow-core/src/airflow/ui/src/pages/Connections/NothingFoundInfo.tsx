@@ -19,12 +19,10 @@
 import { Box, Text, Link, Stack } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 
-import { useVersionServiceGetVersion } from "openapi/queries";
+const docsLink = "https://airflow.apache.org/docs/apache-airflow/stable/howto/connection.html#visibility-in-ui-and-cli";
 
 export const NothingFoundInfo = () => {
   const { t: translate } = useTranslation("admin");
-  const { data } = useVersionServiceGetVersion();
-  const docsLink = `https://airflow.apache.org/docs/apache-airflow/${data?.version}/howto/connection.html#visibility-in-ui-and-cli`;
 
   return (
     <Box textAlign="center">
@@ -35,7 +33,7 @@ export const NothingFoundInfo = () => {
         <Text>{translate("connections.nothingFound.description")}</Text>
         <Text>
           {translate("connections.nothingFound.learnMore")}{" "}
-          <Link href={docsLink} target="blank">
+          <Link href={docsLink} rel="noopener noreferrer" target="_blank">
             {translate("connections.nothingFound.documentationLink")}
           </Link>
         </Text>

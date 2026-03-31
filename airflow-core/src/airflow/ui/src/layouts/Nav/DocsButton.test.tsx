@@ -53,4 +53,14 @@ describe("DocsButton", () => {
 
     expect(await screen.findByText("docs.restApiReference")).toBeInTheDocument();
   });
+
+  it("uses the stable docs url for the version link", async () => {
+    render(<DocsButton externalViews={[]} version="3.2.0" />, { wrapper: Wrapper });
+
+    fireEvent.click(screen.getByRole("button", { name: /nav.docs/iu }));
+
+    const versionLink = await screen.findByRole("link", { name: "3.2.0" });
+
+    expect(versionLink).toHaveAttribute("href", "https://airflow.apache.org/docs/apache-airflow/stable/index.html");
+  });
 });

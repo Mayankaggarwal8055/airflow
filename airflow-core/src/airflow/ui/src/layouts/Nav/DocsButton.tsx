@@ -28,6 +28,7 @@ import { NavButton } from "./NavButton";
 import { PluginMenuItem } from "./PluginMenuItem";
 
 const baseUrl = document.querySelector("base")?.href ?? "http://localhost:8080/";
+const stableDocsBaseUrl = "https://airflow.apache.org/docs/apache-airflow/stable";
 
 const links = [
   {
@@ -56,7 +57,7 @@ export const DocsButton = ({
   const { t: translate } = useTranslation("common");
   const showAPIDocs = Boolean(useConfig("enable_swagger_ui")) && showAPI;
 
-  const versionLink = `https://airflow.apache.org/docs/apache-airflow/${version}/index.html`;
+  const versionLink = `${stableDocsBaseUrl}/index.html`;
 
   return (
     <Menu.Root positioning={{ placement: "right" }}>
